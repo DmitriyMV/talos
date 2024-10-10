@@ -109,6 +109,7 @@ linters-settings:
       - github.com/insomniacslk/dhcp
       - github.com/safchain/ethtool
       - github.com/vishvananda/netlink
+      - github.com/siderolabs/crypto
     retract-allow-no-explanation: false
     exclude-forbidden: false
 
