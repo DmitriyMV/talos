@@ -57,12 +57,18 @@ func CalculateBankData(pcrNumber int, alg tpm2.TPMAlgID, sectionData map[secureb
 		if file := sectionData[section]; file != "" {
 			hashData.Extend(append([]byte(section), 0))
 
-			sectionData, err := os.ReadFile(file)
-			if err != nil {
-				return nil, err
-			}
+			if err = func() error {
+				f, err := os.Open(file)
+				if err != nil {
+					return err
+				}
 
-			hashData.Extend(sectionData)
+				defer f.Close() //nolint:errcheck
+
+				return hashData.ExtendFrom(f)
+			}(); err != nil {
+				return nil, fmt.Errorf("failed to hash section %q: %v", section, err)
+			}
 		}
 	}
 

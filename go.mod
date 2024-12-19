@@ -9,6 +9,8 @@ replace (
 	// forked coredns so we don't carry caddy and other stuff into the Talos
 	github.com/coredns/coredns => github.com/siderolabs/coredns v1.11.53
 
+	github.com/foxboron/go-uefi => github.com/DmitriyMV/go-uefi v0.0.0-20241219083538-cb77aa66c694
+
 	// see https://github.com/mdlayher/kobject/pull/5
 	github.com/mdlayher/kobject => github.com/smira/kobject v0.0.0-20240304111826-49c8d4613389
 
